@@ -16,7 +16,7 @@ const __dirname = path.resolve();
 dotenv.config();
 
 if (process.env.NODE_ENV === "dev") {
-	app.use(cors({ origin: "http://localhost:3000" }));
+	app.use(cors({ origin: "http://localhost:5173" }));
 }
 app.use(helmet());
 app.use(limiter);
@@ -43,5 +43,6 @@ app.use((err, req, res, next) => {
 connectDB().then(() => {
 	app.listen(PORT, () => {
 		console.log(`Server is running on http://localhost:${PORT}`);
+		console.log("Environment:", process.env.NODE_ENV);
 	});
 });
